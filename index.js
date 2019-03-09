@@ -121,4 +121,7 @@ upload()
   .then(data => {
     console.log(data);
   })
-  .catch(console.error);
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
