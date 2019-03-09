@@ -59,10 +59,11 @@ async function getExistAssetsMap({ directory }) {
   }
 }
 
-async function uploadAsset({ assetName, stream }) {
+async function uploadAsset({ assetName, stream, ContentType }) {
   return s3
     .upload({
       Bucket: bucketName,
+      ContentType,
       Key: `${assetsDirectory}/${assetName}`,
       Body: stream
     })
@@ -78,7 +79,13 @@ async function uploadAssetsFromRemoteService({ assets, serviceUri, logger }) {
         .get(`${serviceUri}/${assetName}`)
         .on(`response`, function(response) {
           if (response.statusCode === 200) {
-            resolve(uploadAsset({ stream: response, assetName }));
+            resolve(
+              uploadAsset({
+                stream: response,
+                assetName,
+                ContentType: response.headers[`content-type`]
+              })
+            );
           } else {
             reject(
               new Error(
