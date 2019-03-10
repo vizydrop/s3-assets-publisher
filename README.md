@@ -12,5 +12,11 @@ ENV_S3_SECRET_ACCESS_KEY=<your AWS secret access key>
 ENV_S3_BUCKET_NAME=<your S3 backet name>
 ENV_ASSETS_DIRECTORY=<name directory, e.g. vizydrop>
 ENV_ASSETS_SERVICE_URI=https://example/assets/
-ENV_ASSETS_MANIFESTS=application-manifest.json,manifest.json
+ENV_ASSETS_MANIFESTS=application-assets-manifest.json,assets-manifest.json
 ```
+
+## How it works
+
+App makes request to remote
+assets service https://example/assets/application-assets-manifest.json
+and receives list of files, which is upload to s3.

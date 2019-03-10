@@ -111,7 +111,7 @@ async function upload() {
       )
     )
   ).then(results =>
-    results.reduce((flatted, item) => flatted.concat(Object.values(item)), [])
+    results.reduce((flatted, item) => flatted.concat(item), [])
   );
   const existsAssetsMap = await getExistAssetsMap({
     directory: assetsDirectory
