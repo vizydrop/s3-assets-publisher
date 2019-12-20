@@ -7,7 +7,8 @@ const {
   assetsDirectory,
   bucketName,
   assetsServerUri,
-  assetsManifests
+  assetsManifests,
+  cacheControl
 } = require(`./config`);
 
 const s3 = new AWS.S3({
@@ -42,9 +43,9 @@ async function getListOfFiles({ continuationToken, directory }) {
 
 async function getExistAssetsMap({ directory }) {
   const assetsMap = [];
-  const firsRes = await getListOfFiles({ directory });
-  assetsMap.push(...firsRes.items);
-  let nextContinuationToken = firsRes.nextContinuationToken;
+  const firstRes = await getListOfFiles({ directory });
+  assetsMap.push(...firstRes.items);
+  let nextContinuationToken = firstRes.nextContinuationToken;
   while (true) {
     if (!nextContinuationToken) {
       return assetsMap;
@@ -65,7 +66,8 @@ async function uploadAsset({ assetName, stream, ContentType }) {
       Bucket: bucketName,
       ContentType,
       Key: `${assetsDirectory}/${assetName}`,
-      Body: stream
+      Body: stream,
+      CacheControl: cacheControl
     })
     .promise();
 }
