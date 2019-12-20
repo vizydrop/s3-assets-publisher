@@ -22,6 +22,6 @@ module.exports = {
   bucketName: getEnvVariable(`ENV_S3_BUCKET_NAME`),
   assetsDirectory: getEnvVariable(`ENV_ASSETS_DIRECTORY`),
   assetsServerUri: getEnvVariable(`ENV_ASSETS_SERVICE_URI`),
-  cacheControl: getEnvVariable(`ENV_AWS_S3_CACHE_CONTROL`),
+  cacheControl: getEnvVariable(`ENV_S3_CACHE_CONTROL`),
   assetsManifests: getAssetsManifest()
 };
