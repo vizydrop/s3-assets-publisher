@@ -19,9 +19,10 @@ function getAssetsManifest() {
 module.exports = {
   accessKeyId: getEnvVariable(`ENV_S3_ACCESS_KEY_ID`),
   secretAccessKey: getEnvVariable(`ENV_S3_SECRET_ACCESS_KEY`),
+  region: getEnvVariable(`ENV_S3_DEFAULT_REGION`),
   bucketName: getEnvVariable(`ENV_S3_BUCKET_NAME`),
   assetsDirectory: getEnvVariable(`ENV_ASSETS_DIRECTORY`),
   assetsServerUri: getEnvVariable(`ENV_ASSETS_SERVICE_URI`),
   cacheControl: getEnvVariable(`ENV_S3_CACHE_CONTROL`),
-  assetsManifests: getAssetsManifest()
+  assetsManifests: getAssetsManifest(),
 };

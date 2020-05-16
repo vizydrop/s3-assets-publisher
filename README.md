@@ -9,6 +9,7 @@ Please specify next env variable
 ```env
 ENV_S3_ACCESS_KEY_ID=<your AWS access key ID>
 ENV_S3_SECRET_ACCESS_KEY=<your AWS secret access key>
+ENV_S3_DEFAULT_REGION=<AWS region>
 ENV_S3_BUCKET_NAME=<your S3 backet name>
 ENV_ASSETS_DIRECTORY=<name directory, e.g. vizydrop>
 ENV_ASSETS_SERVICE_URI=https://example/assets/
